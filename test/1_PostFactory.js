@@ -19,7 +19,7 @@ describe("AUDCT", function () {
     const { factory, router, weth9 } = await UniswapV2Deployer.deploy(deployer);
 
     // deploy our token
-    const Token = await ethers.getContractFactory("AUDCT")
+    const Token = await ethers.getContractFactory("DRE")
     const token = await Token.deploy(router.address, fund.address)
     await token.deployed()
 
