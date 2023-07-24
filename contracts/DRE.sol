@@ -18,7 +18,7 @@ contract DRE is ERC20, Ownable, Pausable  {
     uint256 public divisor = 10000;
     uint256 public buyFee = 100;
     uint256 public sellFee = 100;
-
+    
     address public vault;
 
     address public immutable uniswapV2Pair;

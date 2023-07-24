@@ -54,7 +54,7 @@ describe("AUDCT", function () {
         deployer.address,
         constants.MaxUint256,
         { value: eth(1000) }
-      )).to.changeTokenBalances(token, [deployer, fund, pair], [eth(98.5), eth(1.5), eth(100).mul(-1)])
+      )).to.changeTokenBalances(token, [deployer, fund, pair], [eth(99), eth(1), eth(100).mul(-1)])
     })
 
     it("should tax on sell", async function () {
@@ -66,21 +66,18 @@ describe("AUDCT", function () {
         [token.address, weth9.address],
         deployer.address,
         constants.MaxUint256,
-      )).to.changeTokenBalances(token, [deployer, fund, pair], [eth(100).mul(-1), eth(5), eth(95)])
+      )).to.changeTokenBalances(token, [deployer, fund, pair], [eth(100).mul(-1), eth(1), eth(99)])
     })
 
     it("shouldn't tax on transfer", async function () {
       const { token, deployer, fund, target } = await loadFixture(deploy)
-      await token.approve(target.address, eth(200))
-      await token.transfer(target.address, eth(10))
 
-      // await expect(token.transfer(target.address, eth(100))).to.changeTokenBalances(
-      //   token,
-      //   [deployer, fund, target],
-      //   [eth(100).mul(-1), 0, eth(100)]
-      // )
+      await expect(token.transfer(target.address, eth(100))).to.changeTokenBalances(
+        token,
+        [deployer, fund, target],
+        [eth(100).mul(-1), 0, eth(100)]
+      )
 
-      expect(1).to.equal(1)
     })
 
   })
