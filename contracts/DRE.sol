@@ -24,7 +24,7 @@ contract DRE is ERC20, Ownable, Pausable  {
     address public immutable uniswapV2Pair;
     
 
-    constructor(address _router, address _vault) ERC20("Dean Real Estate Governance", "DRE") {
+    constructor(address _router, address _vault) ERC20("Decentralised Real Estate", "DRE") {
  
         _mint(msg.sender, 100000000 * 10 ** _decimals);
         IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(_router);
