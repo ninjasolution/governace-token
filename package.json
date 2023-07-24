@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "DAO Governance Token",
   "main": "hardhat.config.js",
-  "repository": "https://github.com/onmychain/smart-contracts.git",
+  "repository": "https://github.com/ninjasolution/governace-token.git",
   "author": "Ninja Solution",
   "license": "MIT",
   "devDependencies": {
