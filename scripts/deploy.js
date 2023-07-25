@@ -13,7 +13,7 @@ async function main() {
 
   const Token = await hre.ethers.getContractFactory("DRE");
   const token = await Token.deploy(router, vault)
-  console.log("Post deployed to:", token.address);
+  console.log("DRE deployed to:", token.address);
   
   await hre.run("verify:verify", {
     address: token.address,

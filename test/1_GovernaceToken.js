@@ -46,6 +46,22 @@ describe("AUDCT", function () {
 
   describe("transfer", function () {
 
+    it("shouldn't tax on transfer", async function () {
+      const { token, deployer, fund, target } = await loadFixture(deploy)
+
+      await expect(token.transfer(target.address, eth(100))).to.changeTokenBalances(
+        token,
+        [deployer, fund, target],
+        [eth(100).mul(-1), 0, eth(100)]
+      )
+
+    })
+
+  })
+
+
+  describe("transfer", function () {
+
     it("should tax on buy", async function () {
       const { router, weth9, token, deployer, fund, pair } = await loadFixture(deploy)
       await expect(router.swapETHForExactTokens(
@@ -67,17 +83,6 @@ describe("AUDCT", function () {
         deployer.address,
         constants.MaxUint256,
       )).to.changeTokenBalances(token, [deployer, fund, pair], [eth(100).mul(-1), eth(1), eth(99)])
-    })
-
-    it("shouldn't tax on transfer", async function () {
-      const { token, deployer, fund, target } = await loadFixture(deploy)
-
-      await expect(token.transfer(target.address, eth(100))).to.changeTokenBalances(
-        token,
-        [deployer, fund, target],
-        [eth(100).mul(-1), 0, eth(100)]
-      )
-
     })
 
   })
