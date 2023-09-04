@@ -9,7 +9,10 @@
   "scripts": {
     "test": "npx hardhat test",
     "deploy": "npx hardhat run scripts/deploy.js --network goerli",
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "verify": "npx hardhat verify --network goerli",
+    "clean": "npx hardhat clean",
+    "flatten": "npx hardhat flatten > DREGovernor.sol"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
