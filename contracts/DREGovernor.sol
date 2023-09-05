@@ -5801,21 +5801,31 @@ contract DREGovernor is
     GovernorVotesQuorumFraction,
     GovernorTimelockControl
 {
+
+    uint256 private _votingDelay = 10;
+    uint256 private _votingPeriod = 50400;
+    uint256 private _proposalThreshold = 1*10^18;
     constructor(
         IVotes _token,
         TimelockController _timelock
     ) Governor("DRE Governor") GovernorVotes(_token) GovernorVotesQuorumFraction(4) GovernorTimelockControl(_timelock) {}
 
-    function votingDelay() public pure override returns (uint256) {
-        return 0; // 1 day
+    function votingDelay() public view override returns (uint256) {
+        return _votingDelay; // 1 day
     }
 
-    function votingPeriod() public pure override returns (uint256) {
-        return 50400; // 1 week
+    function votingPeriod() public view override returns (uint256) {
+        return _votingPeriod; // 1 week
     }
 
-    function proposalThreshold() public pure override returns (uint256) {
-        return 1*10^18;
+    function proposalThreshold() public view override returns (uint256) {
+        return _proposalThreshold;
+    }
+
+    function setEnvironment(uint256 _delay, uint256 _period, uint256 _threshold) public {
+        _votingDelay = _delay;
+        _votingPeriod = _period;
+        _proposalThreshold = _threshold;
     }
 
     function state(
