@@ -10,9 +10,9 @@ async function main() {
 
   let router = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
   let vault = "0x7B7887059860a1A21f3C62542B6CE5c0a23c76d5";
-  let token = {
-    address: "0xcaC3DD71473BcB38F41f8C0AC6DFC0590078E6EA"
-  }
+  // let token = {
+  //   address: "0xcaC3DD71473BcB38F41f8C0AC6DFC0590078E6EA"
+  // }
   let timelockController = {
     address: "0x94fdBD4d8Fd6B39888297bc5f8Db83D3798d328D"
   }
@@ -25,9 +25,9 @@ async function main() {
   let executors = ["0x7B7887059860a1A21f3C62542B6CE5c0a23c76d5"]
 
   const Token = await hre.ethers.getContractFactory("DRE");
-  // const token = await Token.deploy()
-  // console.log("DRE deployed to:", token.address);
-  token = await Token.attach(token.address);
+  const token = await Token.deploy()
+  console.log("DRE deployed to:", token.address);
+  // token = await Token.attach(token.address);
 
 
   // const TimelockController = await ethers.getContractFactory("TimelockController");

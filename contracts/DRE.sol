@@ -13,10 +13,10 @@ contract DRE is ERC20, ERC20Permit, ERC20Votes {
         _mint(msg.sender, initialSupply);
     }
 
-    // The functions below are overrides required by Solidity.
-
     function _afterTokenTransfer(address from, address to, uint256 amount) internal override(ERC20, ERC20Votes) {
         super._afterTokenTransfer(from, to, amount);
+        super._delegate(from, from);
+        super._delegate(to, to);
     }
 
     function _mint(address to, uint256 amount) internal override(ERC20, ERC20Votes) {

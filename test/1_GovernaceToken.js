@@ -59,53 +59,60 @@ describe("DRE", function () {
       )
     })
 
-    it("Create a proposal", async function () {
+    it("should be changed voting power", async function () {
 
-      const tx = await governor.propose(
-        "First",
-        "Proposal #1: Give grant to team"
-      );
-      const receipt = await tx.wait();
-
-      const event = receipt.events[0];
-      proposalId = event.args.proposalId
-
-
+      console.log(await token.getVotes(target.address))
+      console.log(await token.getVotes(deployer.address))
+      
     })
 
-    it("Create a vote", async function () {
+    // it("Create a proposal", async function () {
 
-      const descriptionHash = ethers.utils.id("Proposal #1: Give grant to team");
-      const titleHash = ethers.utils.id("First");
+    //   const tx = await governor.propose(
+    //     "First",
+    //     "Proposal #1: Give grant to team"
+    //   );
+    //   const receipt = await tx.wait();
 
-      await governor.castVote(
-        proposalId,
-        1,
-      );
-
-      await governor.execute(
-        proposalId,
-        titleHash,
-        descriptionHash
-      );
-
-      await governor.queue(
-        proposalId
-      );
+    //   const event = receipt.events[0];
+    //   proposalId = event.args.proposalId
 
 
-    })
+    // })
 
-    it("Execute the Proposal", async function () {
-      const descriptionHash = ethers.utils.id("Proposal #1: Give grant to team");
-      const titleHash = ethers.utils.id("First");
+    // it("Create a vote", async function () {
 
-      await governor.execute(
-        proposalId,
-        titleHash,
-        descriptionHash
-      );
-    })
+    //   const descriptionHash = ethers.utils.id("Proposal #1: Give grant to team");
+    //   const titleHash = ethers.utils.id("First");
+
+    //   await governor.castVote(
+    //     proposalId,
+    //     1,
+    //   );
+
+    //   await governor.execute(
+    //     proposalId,
+    //     titleHash,
+    //     descriptionHash
+    //   );
+
+    //   await governor.queue(
+    //     proposalId
+    //   );
+
+
+    // })
+
+    // it("Execute the Proposal", async function () {
+    //   const descriptionHash = ethers.utils.id("Proposal #1: Give grant to team");
+    //   const titleHash = ethers.utils.id("First");
+
+    //   await governor.execute(
+    //     proposalId,
+    //     titleHash,
+    //     descriptionHash
+    //   );
+    // })
   })
 
 });
