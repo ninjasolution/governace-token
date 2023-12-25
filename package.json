@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "test": "npx hardhat test",
-    "deploy": "npx hardhat run scripts/deploy.js --network goerli",
+    "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
     "compile": "npx hardhat compile",
-    "verify": "npx hardhat verify --network goerli",
+    "verify": "npx hardhat verify --network sepolia --constructor-args arguments.js",
     "clean": "npx hardhat clean",
     "flatten": "npx hardhat flatten > DREGovernor.sol"
   },

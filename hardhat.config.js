@@ -38,6 +38,11 @@ module.exports = {
       url: `https://goerli.infura.io/v3/${infraKey}`,
       accounts: [PRIVATE_KEY],
     },
+    sepolia: {
+      url: `https://eth-sepolia.g.alchemy.com/v2/-hba0sbFIuYmoTG2WmZDby52IY90I5pb`,
+      accounts: [PRIVATE_KEY],
+      chainId: 11155111
+    },
     localhost: {
       live: false,
       saveDeployments: true,
